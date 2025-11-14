@@ -10,6 +10,8 @@
             
             <Label Text="Senha"></Label>
             <Entry IsPassword="True" Text="{Binding Usuario.Senha}"/>
+
+            <Button Command="{Binding TryLoginCommand}">Fazer Login</Button>
         </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,16 @@
-﻿namespace ProjetoFInalTiago.Services;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoFInalTiago.Database;
+using ProjetoFInalTiago.Models;
 
-public class ClimaService : IClimaService
+namespace ProjetoFInalTiago.Services;
+
+public class ClimaService(FinalDbContext dbContext) : IClimaService
 {
-    // Conexão do clima com o banco
+    private FinalDbContext DbContext { get; } = dbContext;
+
+    public async Task AddNewClima(Clima clima) 
+    {
+        DbContext.Climas.Add(clima);
+        await DbContext.SaveChangesAsync();
+    }
 }

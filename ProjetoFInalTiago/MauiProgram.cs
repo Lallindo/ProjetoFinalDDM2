@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using ProjetoFInalTiago.Database;
 using ProjetoFInalTiago.Services;
 using ProjetoFInalTiago.ViewModels;
 using ProjetoFInalTiago.Views;
@@ -36,7 +38,13 @@ public static class MauiProgram
         builder.Services.AddSingleton<IUsuarioService, UsuarioService>();
         builder.Services.AddSingleton<IClimaService, ClimaService>();
         builder.Services.AddSingleton<IWeatherService, WeatherService>();
-        
+
+        // Database
+        builder.Services.AddDbContext<FinalDbContext>(options =>
+        {
+            options.UseSqlite($"Data Source={FinalDbContext.GetSqLiteConnection()}");
+        });
+
         return builder.Build();
     }
 }
