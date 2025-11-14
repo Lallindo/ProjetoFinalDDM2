@@ -4,6 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoFInalTiago.Views.Login">
     <ContentPage.Content>
-        
+        <VerticalStackLayout>
+            <Label Text="Usuário"></Label>
+            <Entry Placeholder="Seu usuário" Text="{Binding Usuario.Nome}"/>
+            
+            <Label Text="Senha"></Label>
+            <Entry IsPassword="True" Text="{Binding Usuario.Senha}"/>
+        </VerticalStackLayout>
     </ContentPage.Content>
 </ContentPage>
